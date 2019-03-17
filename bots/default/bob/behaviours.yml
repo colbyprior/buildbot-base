@@ -1,0 +1,15 @@
+---
+
+behaviours:
+  - 
+    id: test time
+    trigger: time.rand
+    cron: '5'
+    action: blah
+  - 
+    id: test get
+    trigger: http.get
+    path: '/foo'
+    arguments: 'bar=z'
+    regex: '/woop/'
+    action: bar
