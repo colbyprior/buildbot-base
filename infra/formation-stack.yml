@@ -1,0 +1,29 @@
+---
+AWSTemplateFormatVersion: "2010-09-09"
+Description: "Buildbot web app"
+Parameters:
+  HostedZone:
+    Type: String
+    Default: example.com
+
+Resources:
+  #
+  # IAM
+  #
+  # registration role
+  # scores role
+
+  #
+  # Dynamo
+  #
+  # requests table
+  # teams table
+  # team meberships table
+
+  #
+  # Lambda
+  #
+  # request, call from static request page with captcha
+  # set team
+  # pull scores
+  # authenticate, call to auth for admin page
