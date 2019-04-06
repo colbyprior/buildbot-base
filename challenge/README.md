@@ -1,0 +1,2 @@
+- Set up python3 venv: `virtualenv venv --python=python3`
+- Enter venv: `source venv/bin/activate`
