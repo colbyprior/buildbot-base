@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 
-import checker as c
+import challenges as c
 
-check = c.Checker()
-print(check.test())
+check = c.Challenges('', '')

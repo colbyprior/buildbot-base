@@ -1,25 +1,23 @@
 #!/usr/bin/env python
 
 import yaml
-import trigger_http
-import trigger_time
+#import trigger_http
 
 class Challenge():
     path=''
-    behaviours={}
+    challenge={}
 
-    def __init__(self, path, name):
-        self.path=path
-        stream = file(path + 'behaviours.yml', 'r')
-        self.behaviours=yaml.load(stream)['behaviours']
-        self.loop_triggers()
+    def __init__(self, challenge):
+        self.challenge=challenge
+        for stage in self.challenge:
+            print (stage)
 
     def loop_triggers(self):
-        for behaviour in self.behaviours:
-            res, msg = eval('trigger_' + behaviour['trigger'] + '(behaviour)')
+        for challenge in self.challenges:
+            res, msg = eval('trigger_' + challenge['trigger'] + '(challenge)')
             if res == False:
-                self.do_action(behaviour['action'])
+                self.do_action(challenge['action'])
 
     def do_action(self, action):
-        pb = PlayBook(playbook= path + behaviour['action'] )
+        pb = PlayBook(playbook= path + challenge['action'] )
         pb.run()

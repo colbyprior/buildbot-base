@@ -7,7 +7,7 @@ challenge_1:
     path: 'challenge_1/'
     checker:
       type: 'http_get'
-      get: 'foobar.php'
+      path: 'foobar.php'
       arguments: 'search=mypage'
       regex: '/mypage\.php/'
       code: 200
@@ -33,7 +33,7 @@ challenge_1:
     readme: 'contain.md'
     checker:
       type: 'http_get'
-      get: '/foobar.php'
+      path: '/foobar.php'
       args: "search=';1=1"
       regex: '/Blocked/'
       code: '503'
@@ -47,7 +47,7 @@ challenge_1:
     readme: 'eradicate.md'
     checker:
       type: 'http_get'
-      get: '/shell.php'
+      path: '/shell.php'
       args: ""
       regex: '//'
       code: '404'
