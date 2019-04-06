@@ -1,0 +1,77 @@
+---
+
+challenge_1:
+  -
+    stage: 0
+    cform: 'app.yml'
+    path: 'challenge_1/'
+    checker:
+      type: 'http_get'
+      get: 'foobar.php'
+      arguments: 'search=mypage'
+      regex: '/mypage\.php/'
+      code: 200
+      points:
+        first: 20
+        pass: 1
+        fail: -0.5
+      ready: 'Start getting points!'
+  - 
+    stage: 1
+    readme: 'prepare.md'
+  - 
+    stage: 2
+    readme: 'identify.md'
+    submit: 
+      question: 'What is the relative path to the vulnerable page?'
+      answer: '/foobar.php'
+      points:
+        pass: 50
+        fail: -10
+  - 
+    stage: 3
+    readme: 'contain.md'
+    checker:
+      type: 'http_get'
+      get: '/foobar.php'
+      args: "search=';1=1"
+      regex: '/Blocked/'
+      code: '503'
+      points:
+        first: 30
+        pass: 2
+        fail: -1
+      ready: 'I have blocked this vulnerability and I am ready to test'
+  - 
+    stage: 4
+    readme: 'eradicate.md'
+    checker:
+      type: 'http_get'
+      get: '/shell.php'
+      args: ""
+      regex: '//'
+      code: '404'
+      points:
+        first: 40
+        pass: 3
+        fail: -1.5
+      ready: 'I have eradicated the malware and I am ready to test'
+  - 
+    stage: 5
+    readme: 'recovery.md'
+    pytest:
+      -
+        file: 'test_secret_ci.py'
+        points:
+          pass: 200
+          fail: -20
+ 
+  - 
+    stage: 6
+    readme: 'lessonslearned.md'
+    pytest:
+      -
+        file: 'test_secret_ci.py'
+        points:
+          pass: 300
+          fail: -30
